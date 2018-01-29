@@ -52,22 +52,6 @@ public class MainActivity extends AppCompatActivity {
         // only for M and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-            // get the system power manager
-            final PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-            final String packageName = getPackageName();
-
-            // if the app isn't ignoring battery optimizations (doze-mode), present a dialog to
-            // the user
-            if (!powerManager.isIgnoringBatteryOptimizations(packageName)) {
-
-                // create an intent to show the user the battery optimization dialog
-                final Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
-                intent.setData(Uri.fromParts("package", packageName, null));
-
-                // start the intent
-                startActivity(intent);
-            }
-
             // list of permissions to check
             final String permissionsToCheck[] = new String[]{
                     Manifest.permission.ACCESS_COARSE_LOCATION,
